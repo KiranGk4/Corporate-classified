@@ -1,10 +1,12 @@
 package com.classified.ust.api.like;
 
 import com.classified.ust.api.offer.Offer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -19,8 +21,10 @@ public class Like {
 
     private LocalDate likeDate;
     private boolean likeActive;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "like")
+    //@JsonIgnore
     @Column(name = "offer_id")
-    private Set<Offer> offerSet;
+    private List<Offer> offerList;
 
 }

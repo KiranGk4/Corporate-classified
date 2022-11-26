@@ -1,6 +1,6 @@
 .fluid-container{
 
-    background-image: url("/assets/images/231.webp");
+    background-image: url("/assets/images/download.jpg");
     
     background-repeat: no-repeat;
     padding-bottom: 1cm;
@@ -19,7 +19,7 @@
     justify-content: center;
    }
    .background {
-    background-color:rgb(2, 2, 59);
+    background-color:rgb(51,153,255);
     background-blend-mode: darken;
     background-size: cover;
     

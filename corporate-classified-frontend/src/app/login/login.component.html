@@ -1,14 +1,66 @@
+<title>Corperate Classifieds</title>
+	<div style="height:150px;padding: 0;">
+		
+	   <header class="py-5"  style="height: 2%; background-color:rgb(2, 2, 59);">
+		
+				<div class="top text-white">
+					<h1 id="title" class="hidden"><span id="logo ">Corperate Classifieds</span></h1>
+				</div>
+	   </header>
+			<div class="login-box animated fadeInUp" align="center">
+				<div class="fluid-container vh-100">
+					<div class="box-header text-primary"><br><br>
+				
+						<div class="card mb-6">
+							<div class="card-body pt-2 pb-2 text-center text-primary ">
+					
+							<h2>Log In</h2><br>
+								<!--<label for="username" >Username</label>
+								<br/>-->
+								<input class="form-control" type="text" placeholder="Username" required>
+									<br/>
+								<!--<label for="password">Password</label>
+								<br/>-->
+								<input class="form-control" type="text" placeholder="Password"required>
+								<br/>
 
-    <header class="bg-warning bg-gradient text-white py-5" style="height: 10%;">
-    <nav class="nav-items" align="right">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
-  </nav>
+								<button type="button" class="btn btn-primary" data-bs-toggle="button" routerLink="/home">Sign In</button>
+			
+								<br/><br>
+								<!--<a href="#"><p class="small">Forgot your password?</p></a>-->
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			
+	     <footer class="background">				
 
-</header>
-<br><br>
-  <h1 align="center"><strong><i>Welcome to Corperate Classifieds</i></strong></h1>
-  <h5  align="center"> Your personal online exchange</h5>
-    <h5 align="center"><button type="button" class="btn btn-success" data-bs-toggle="button">LogIn</button>
-    </h5>
+		<p class="text-footer text-white">
+	
+		Copyright @-All rights are reserved
+		
+		</p>
+		
+		
+		</footer>
+
+
+<script>
+	$(document).ready(function () {
+    	$('#logo').addClass('animated fadeInDown');
+    	$("input:text:visible:first").focus();
+	});
+	$('#username').focus(function() {
+		$('label[for="username"]').addClass('selected');
+	});
+	$('#username').blur(function() {
+		$('label[for="username"]').removeClass('selected');
+	});
+	$('#password').focus(function() {
+		$('label[for="password"]').addClass('selected');
+	});
+	$('#password').blur(function() {
+		$('label[for="password"]').removeClass('selected');
+	});
+</script>

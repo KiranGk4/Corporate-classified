@@ -11,7 +11,5 @@ export interface Offer{
     offerClosedDate: string;
     offerPrice: number;
     offerNegotiable: boolean;
-    offerCreatedDate: string;
-    offerModifiedDate: string;
     //employee: Employee[];
 }

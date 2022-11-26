@@ -48,7 +48,7 @@ public class Employee implements UserDetails {
     private LocalDateTime employeeCreatedDate;
     private LocalDateTime employeeModifiedDate;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "employee_details_id")
     private EmployeeDetails employeeDetails;
 

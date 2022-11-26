@@ -13,7 +13,7 @@ import java.util.Set;
 @Table(name = "classified_employee_details")
 public class EmployeeDetails {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long employeeDetailsId;
     @Column(nullable = false)
     private String employeeDetailsName;

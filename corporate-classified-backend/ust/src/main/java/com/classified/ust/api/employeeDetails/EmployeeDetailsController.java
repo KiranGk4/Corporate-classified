@@ -35,11 +35,11 @@ public class EmployeeDetailsController {
     }*/
 
     @PostMapping("/employee-details/")
-    public ResponseEntity<EmployeeDetails> saveEmployeeDetails(@RequestBody EmployeeDetails employeeDetails, @RequestBody Employee employee)
+    public ResponseEntity<EmployeeDetails> saveEmployeeDetails(@RequestBody EmployeeDetails employeeDetails)
     {
         try
         {
-            EmployeeDetails employeeDetails1 = employeeDetailsService.saveEmployeeDetails(employeeDetails, employee);
+            EmployeeDetails employeeDetails1 = employeeDetailsService.saveEmployeeDetails(employeeDetails);
             //Employee employee1 = employeeService.saveEmployee(employee);
             return new ResponseEntity<>(employeeDetails1, HttpStatus.OK);
         }

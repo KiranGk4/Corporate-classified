@@ -10,7 +10,9 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyOffersComponent } from './my-offers/my-offers.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { EmployeeHomeComponent } from './employee-home/employee-home.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +23,7 @@ import { MainPageComponent } from './main-page/main-page.component';
     ProfileComponent,
     MyOffersComponent,
     ContactComponent,
-    HomeComponent,
-    MainPageComponent
+    HomeComponent
   ],
   imports: [
     BrowserModule,

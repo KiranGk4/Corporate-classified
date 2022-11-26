@@ -4,6 +4,7 @@ import com.classified.ust.api.category.Category;
 import com.classified.ust.api.employee.Employee;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +22,13 @@ public class OfferController {
     OfferService offerService;
 
     @GetMapping("/offer-by-employee/{id}")
-    public ResponseEntity<Set<Offer>> getOffer(@PathVariable Long id)
+    public ResponseEntity<Set<OfferDto>> getOffer(@PathVariable Long id)
     {
         try
         {
             Set<Offer> offer = offerService.getAllOfferByEmployeeId(id);
-            return new ResponseEntity<Set<Offer>>(offer, HttpStatus.OK);
+            Set<OfferDto> offerDtoSet = offerService.convertToOfferDtoSet(offer);
+            return new ResponseEntity<Set<OfferDto>>(offerDtoSet, HttpStatus.OK);
         }
         catch (NoSuchElementException e)
         {
@@ -35,12 +37,14 @@ public class OfferController {
     }
 
     @PostMapping("/post-offer")
-    public ResponseEntity<Offer> addOffer(@RequestBody Offer offer)
+    public ResponseEntity<OfferDto> addOffer(@RequestBody Offer offer)
     {
+        log.info("add offer");
         try
         {
             Offer offer1 = offerService.saveOffer(offer);
-            return new ResponseEntity<>(offer1,HttpStatus.CREATED);
+            OfferDto offerDto = offerService.convertToOfferDto(offer1);
+            return new ResponseEntity<OfferDto>(offerDto,HttpStatus.CREATED);
         }
         catch (NoSuchElementException e)
         {
@@ -49,12 +53,13 @@ public class OfferController {
     }
 
     @PutMapping("/update-offer")
-    public ResponseEntity<Offer> updateOffer(@RequestBody Offer offer)
+    public ResponseEntity<OfferDto> updateOffer(@RequestBody Offer offer)
     {
         try
         {
             Offer offer1 = offerService.updateOffer(offer);
-            return new ResponseEntity<>(offer1,HttpStatus.CREATED);
+            OfferDto offerDto = offerService.convertToOfferDto(offer1);
+            return new ResponseEntity<>(offerDto,HttpStatus.CREATED);
         }
         catch (NoSuchElementException e)
         {
@@ -63,32 +68,49 @@ public class OfferController {
     }
 
     @GetMapping("/offer-by-category/{id}")
-    public ResponseEntity <List<Offer>> getOfferByCategory(@PathVariable Long id) {
+    public ResponseEntity <List<OfferDto>> getOfferByCategory(@PathVariable Long id) {
         try {
             List<Offer> offer = offerService.getOfferByCategory(id);
-            return new ResponseEntity<List<Offer>>(offer, HttpStatus.OK);
+            List<OfferDto> offerDtoList = offerService.convertToOfferDtoList(offer);
+           // List<OfferDto> offerDto = offerService.
+            return new ResponseEntity<List<OfferDto>>(offerDtoList, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
     @GetMapping("/offer-by-date/{date}")
-    public ResponseEntity <Set<Offer>> getOfferByDate(@PathVariable LocalDate date) {
+    public ResponseEntity <Set<OfferDto>> getOfferByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         try {
             Set<Offer> offer = offerService.getOfferAllByDate(date);
-            return new ResponseEntity<Set<Offer>>(offer, HttpStatus.OK);
+            Set<OfferDto> offerDtoSet = offerService.convertToOfferDtoSet(offer);
+            return new ResponseEntity<Set<OfferDto>>(offerDtoSet, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/offer-all")
-    public ResponseEntity <List<Offer>> getAllOffer() {
+    public ResponseEntity <List<OfferDto>> getAllOffer() {
         try {
             List<Offer> offer = offerService.getOfferAll();
-            return new ResponseEntity<List<Offer>>(offer, HttpStatus.OK);
+            List<OfferDto> offerDtoList = offerService.convertToOfferDtoList(offer);
+            return new ResponseEntity<List<OfferDto>>(offerDtoList, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
     }
+
+   /* @GetMapping("/offer-like/{id}")
+    public ResponseEntity<?> getLikeCount(@PathVariable long id)
+    {
+        try {
+            Offer offer = offerService.getLikeCount(id);
+            return new ResponseEntity<>(offer, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+    }*/
 }

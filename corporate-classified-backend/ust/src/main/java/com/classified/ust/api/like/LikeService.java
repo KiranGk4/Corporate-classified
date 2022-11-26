@@ -21,6 +21,7 @@ public class LikeService {
     {
         like.setLikeActive(true);
         like.setLikeDate(LocalDate.now());
+        like.getOffer().setOfferLikes((like.getOffer().getOfferLikes()+1));
         return likeRepository.save(like);
     }
 

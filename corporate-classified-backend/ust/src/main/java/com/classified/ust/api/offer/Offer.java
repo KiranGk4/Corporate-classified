@@ -1,6 +1,7 @@
 package com.classified.ust.api.offer;
 
 import com.classified.ust.api.category.Category;
+import com.classified.ust.api.category.CategoryDto;
 import com.classified.ust.api.employee.Employee;
 import com.classified.ust.api.like.Like;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -9,6 +10,8 @@ import lombok.Data;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Data
@@ -47,7 +50,17 @@ public class Offer {
     @JoinColumn(name = "category_id")
     private Category category;
 
-    @ManyToOne
+   /* @ManyToOne
+    @JoinColumn(name = "category_id")
+    private CategoryDto category;
+
+   /* @ManyToOne
     @JoinColumn(name = "like_id")
-    private Like like;
+    private Like like;*/
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "offer")
+   @JsonIgnore
+   @Column(name = "like_id")
+   private List<Like> likeList;
+
+
 }

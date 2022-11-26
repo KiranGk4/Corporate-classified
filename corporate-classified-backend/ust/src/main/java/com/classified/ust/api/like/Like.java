@@ -1,5 +1,6 @@
 package com.classified.ust.api.like;
 
+import com.classified.ust.api.employee.Employee;
 import com.classified.ust.api.offer.Offer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
@@ -22,9 +23,13 @@ public class Like {
     private LocalDate likeDate;
     private boolean likeActive;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "like")
+    /*@OneToMany(cascade = CascadeType.ALL, mappedBy = "like")
     //@JsonIgnore
     @Column(name = "offer_id")
-    private List<Offer> offerList;
+    private List<Offer> offerList;*/
 
+    @ManyToOne
+    //@JsonIgnore
+    @JoinColumn(name = "offer_id")
+    private Offer offer;
 }

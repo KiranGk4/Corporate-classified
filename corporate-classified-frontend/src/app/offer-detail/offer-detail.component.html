@@ -1,1 +1,49 @@
-<p>offer-detail works!</p>
+<div class="row">
+    <div class="col-sm-8">
+      <div class="card m-5 shadow">
+        <div class="card-header m-0 p-2">
+          <h2>Post an Offer</h2>
+        </div>
+        <div class="card-body" *ngIf = "offer">
+  
+            <dl class="row">
+                <dt class="col-sm-3">Title</dt>
+                <dd class="col-sm-9">{{ offer.offerTitle }}</dd>
+              
+                <dt class="col-sm-3">Description</dt>
+                <dd class="col-sm-9">
+                  <p>{{ offer.offerDescription }}</p>
+                  
+                </dd>
+                
+                <dt class="col-sm-3">Posted On</dt>
+                <dd class="col-sm-9">{{ offer.offerOpenedDate }}</dd>
+
+                <dt class="col-sm-3">Category</dt>
+                <dd class="col-sm-9">{{ offer.category.categoryName }}</dd>
+              
+                <dt class="col-sm-3">Price</dt>
+                <dd class="col-sm-9">{{ offer.offerPrice }}</dd>
+              
+                <dt class="col-sm-3 text-truncate">Negotiable</dt>
+                <dd class="col-sm-9">{{ offer.offerNegotiable == true ? "YES" : "NO" }}</dd>
+                
+                <dt class="col-sm-3">Likes</dt>
+                <dd class="col-sm-9">{{ offer.offerLikes }}</dd>
+                <br>
+                <dt class="col-sm-3">Liked ?</dt>
+                <dd class="col-sm-9"><button onclick="liked()"><i class="fa fa-thumbs-o-up" id="like" aria-hidden="true"></i></button></dd>
+                
+              </dl>
+              
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script>
+    function liked(){
+    var icon = document.getElementById('like');
+    icon.style.color="black"; -->
+    <!-- //image.style.display = (image.style.color == 'none') ? 'block' : 'none';
+// }; -->
+<!-- //   </script> -->

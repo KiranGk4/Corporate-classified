@@ -102,6 +102,18 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/offer-by-id/{offerId}")
+    public ResponseEntity <OfferDto> getAllOffer(@PathVariable Long offerId) {
+        try {
+            Offer offer = offerService.getOfferById(offerId);
+            OfferDto offerDto = offerService.convertToOfferDto(offer);
+            return new ResponseEntity<OfferDto>(offerDto, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
    /* @GetMapping("/offer-like/{id}")
     public ResponseEntity<?> getLikeCount(@PathVariable long id)
     {

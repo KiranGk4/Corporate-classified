@@ -108,6 +108,11 @@ public class OfferService {
     public Set<OfferDto> convertToOfferDtoSet(Set<Offer> offer) {
         return offer.stream().map(e->modelMapper.map(e, OfferDto.class)).collect(Collectors.toSet());
     }
+
+    public Offer getOfferById(Long offerId) {
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+offerId);
+        return offerRepository.findById(offerId).orElseThrow(()->new NoSuchElementException());
+    }
    /* public CategoryDto convertCategoryToDTO(Category category)
     {
         //return studentDTOList.stream().map(e->modelMapper.map(e, StudentDTO.class)).collect(Collectors.toList());

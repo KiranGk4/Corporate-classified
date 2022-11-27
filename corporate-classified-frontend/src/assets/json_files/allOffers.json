@@ -1,0 +1,17 @@
+[
+    {
+        "offerId":1,
+        "offerTitle":"House Sale",
+        "offerDescription":"description",
+        "offerLikes":4,
+        "offerActive":true,
+        "offerOpenedDate":"2022-11-23",
+        "offerEngagedDate": null,
+        "offerClosedDate": null,
+        "offerPrice": 5000,
+        "offerNegotiable": true,
+        "employee":{
+            
+        }
+    }
+]

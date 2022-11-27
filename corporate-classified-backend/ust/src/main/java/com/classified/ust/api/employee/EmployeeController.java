@@ -18,13 +18,13 @@ public class EmployeeController {
     EmployeeService employeeService;
 
    @GetMapping("/employee/{id}")
-    public ResponseEntity<Employee> getEmployee(@PathVariable Long id)
+    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Long id)
     {
         log.info("response of employee");
         try
         {
-            Employee employee = employeeService.getEmployeeById(id);
-            return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+            EmployeeDto employeeDto = employeeService.getEmployeeById(id);
+            return new ResponseEntity<EmployeeDto>(employeeDto, HttpStatus.OK);
         }
         catch (NoSuchElementException e)
         {
@@ -32,14 +32,15 @@ public class EmployeeController {
         }
     }
 
-    @PostMapping("/employee/")
-    public ResponseEntity<Employee> saveEmployee(@RequestBody Employee employee)
+    @PostMapping("/employee")
+    public ResponseEntity<EmployeeDto> saveEmployee(@RequestBody Employee employee)
     {
         log.info("response of employee");
         try
         {
             Employee employee1 = employeeService.saveEmployee(employee);
-            return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+            EmployeeDto employeeDto = employeeService.convertToEmployeeDto(employee1);
+            return new ResponseEntity<EmployeeDto>(employeeDto, HttpStatus.OK);
         }
         catch (NoSuchElementException e)
         {
@@ -48,13 +49,13 @@ public class EmployeeController {
     }
 
     @GetMapping("/employee-email/{email}")
-    public ResponseEntity<Employee> getEmployee(@PathVariable String email)
+    public ResponseEntity<EmployeeDto> getEmployee(@PathVariable String email)
     {
         log.info("response of employee");
         try
         {
-            Employee employee = employeeService.getEmployeeByEmail(email);
-            return new ResponseEntity<Employee>(employee, HttpStatus.OK);
+            EmployeeDto employee = employeeService.getEmployeeByEmail(email);
+            return new ResponseEntity<EmployeeDto>(employee, HttpStatus.OK);
         }
         catch (NoSuchElementException e)
         {

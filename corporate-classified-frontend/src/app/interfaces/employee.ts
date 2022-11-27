@@ -1,6 +1,9 @@
+import { EmployeeDetails } from "./employee-details";
+import { Offer } from "./offer";
+
 export interface Employee{
     employeeId: number;
-    employeeName: string;
     employeeEmail: string;
-    employeeMobileNumber: string;
+    employeeDetails: EmployeeDetails;
+    offerSet: Offer[];
 }

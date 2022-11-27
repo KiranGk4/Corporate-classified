@@ -90,7 +90,7 @@ public class OfferController {
         }
     }
 
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/offer-all")
     public ResponseEntity <List<OfferDto>> getAllOffer() {
         try {

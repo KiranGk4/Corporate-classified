@@ -32,16 +32,11 @@ public class EmployeeDetailsService {
         boolean validName = EmployeeUtil.validateName(employee.getEmployeeName());
     }*/
 
-    public EmployeeDetails saveEmployeeDetails(EmployeeDetails employeeDetails, Employee employee)
+    public EmployeeDetails saveEmployeeDetails(EmployeeDetails employeeDetails)
     {
         employeeDetails.setEmployeeDetailsCreatedDate(LocalDateTime.now());
         employeeDetails.setEmployeeDetailsModifiedDate(employeeDetails.getEmployeeDetailsCreatedDate());
         employeeDetails.setEmployeeDetailsActive(true);
-        employee.setEmployeeCreatedDate(employeeDetails.getEmployeeDetailsCreatedDate());
-        employee.setEmployeeModifiedDate(employee.getEmployeeCreatedDate());
-        employee.setEmployeeActive(true);
-        //employeeService.saveEmployee()
-        employeeRepository.save(employee);
         return employeeDetailsRespository.save(employeeDetails);
     }
 

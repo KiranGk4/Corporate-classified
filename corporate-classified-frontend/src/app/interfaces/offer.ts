@@ -1,3 +1,4 @@
+import { Category } from "./category";
 import { Employee } from "./employee";
 
 export interface Offer{
@@ -11,5 +12,6 @@ export interface Offer{
     offerClosedDate: string;
     offerPrice: number;
     offerNegotiable: boolean;
-    //employee: Employee[];
+    employee: Employee;
+    category: Category;
 }

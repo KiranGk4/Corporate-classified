@@ -16,7 +16,7 @@ const routes: Routes = [
     children: [
       { path: 'profile', component: ProfileComponent},
       {path: 'post-offer', component: PostOfferComponent},
-      {path: 'offer-detail', component: OfferDetailComponent},
+      {path: 'offer-detail/:id', component: OfferDetailComponent},
       {path: 'my-offers', component: MyOffersComponent},
       {path: 'employee-home', component:EmployeeHomeComponent}
     ],
@@ -24,6 +24,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'home', component: HomeComponent},
   {path: 'contact', component:ContactComponent },
+  { path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: '**', component:PageNotFoundComponent}
 ];
 

@@ -17,9 +17,9 @@ import java.util.List;
 public class OfferDto {
     private long offerId;
     private int offerLikes;
-    private LocalDateTime offerOpenedDate;
-    private LocalDateTime offerClosedDate;
-    private LocalDateTime offerEngagedDate;
+    private LocalDate offerOpenedDate;
+    private LocalDate offerClosedDate;
+    private LocalDate offerEngagedDate;
     private String offerTitle;
     private String offerDescription;
 

@@ -90,13 +90,25 @@ public class OfferController {
         }
     }
 
-    @CrossOrigin("http://localhost:4200")
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/offer-all")
     public ResponseEntity <List<OfferDto>> getAllOffer() {
         try {
             List<Offer> offer = offerService.getOfferAll();
             List<OfferDto> offerDtoList = offerService.convertToOfferDtoList(offer);
             return new ResponseEntity<List<OfferDto>>(offerDtoList, HttpStatus.OK);
+        } catch (NoSuchElementException e) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @CrossOrigin("http://localhost:4200/")
+    @GetMapping("/offer-by-id/{offerId}")
+    public ResponseEntity <OfferDto> getAllOffer(@PathVariable Long offerId) {
+        try {
+            Offer offer = offerService.getOfferById(offerId);
+            OfferDto offerDto = offerService.convertToOfferDto(offer);
+            return new ResponseEntity<OfferDto>(offerDto, HttpStatus.OK);
         } catch (NoSuchElementException e) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }

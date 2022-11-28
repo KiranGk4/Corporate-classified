@@ -10,6 +10,13 @@ import { ProfileComponent } from './profile/profile.component';
 import { MyOffersComponent } from './my-offers/my-offers.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
+import { EmployeeHomeComponent } from './employee-home/employee-home.component';
+import { MainPageComponent } from './main-page/main-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -20,11 +27,17 @@ import { HomeComponent } from './home/home.component';
     ProfileComponent,
     MyOffersComponent,
     ContactComponent,
-    HomeComponent
+    HomeComponent,
+    EmployeeHomeComponent,
+    MainPageComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

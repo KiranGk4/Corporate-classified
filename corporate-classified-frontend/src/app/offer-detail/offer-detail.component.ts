@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Offer } from '../interfaces/offer';
+import { OfferService } from '../services/offer/offer.service';
 
 @Component({
   selector: 'app-offer-detail',
@@ -7,9 +10,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OfferDetailComponent implements OnInit {
 
-  constructor() { }
+  offer: Offer | undefined;
+
+  constructor(
+    private offerService: OfferService,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
-  }
+    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
 
+    this.offerService.getOffer(id).subscribe(
+      data => {
+        this.offer = data;
+        console.log(this.offer);
+      }
+    )
+  }
 }

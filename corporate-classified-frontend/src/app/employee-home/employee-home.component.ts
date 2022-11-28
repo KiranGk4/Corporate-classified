@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
+import { Category } from '../interfaces/category';
 import { Offer } from '../interfaces/offer';
 import { OfferService } from '../services/offer/offer.service';
 
@@ -10,15 +12,36 @@ import { OfferService } from '../services/offer/offer.service';
 export class EmployeeHomeComponent implements OnInit {
 
   offers: Offer[] = [];
-  constructor(private offerService: OfferService) { }
+  //category: Category[] = [];
+  constructor(private offerService: OfferService,private route:Router) { }
 
   ngOnInit(): void {
+    
+    // this.offerService.getCategory().subscribe(
+    //   data => {
+    //     this.category = data;
+    //   }
+    // )
+
     this.offerService.getAllOffers().subscribe(
       data => {
         this.offers = data;
         console.log(this.offers);
       }
     )
-  }
+    
 
+  }
+  //get Offer by Category
+  filterByCategory(categoryId:number):void{
+   console.log(categoryId);
+   this.offerService.getOfferByCategory(categoryId).subscribe(
+    data => {
+      this.offers = data;
+      console.log(this.offers);
+    }
+  )
+  // console.log(categoryId);
+  // this.route.navigate(['/main-page/employee-home/'+categoryId]);
+  }
 }

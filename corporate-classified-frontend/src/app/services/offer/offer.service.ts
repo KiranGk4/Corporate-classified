@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from 'src/app/interfaces/category';
 import { Offer } from 'src/app/interfaces/offer';
 
 @Injectable({
@@ -19,5 +20,12 @@ export class OfferService {
 
   getOffer(id: number): Observable<Offer>{
     return this.http.get<Offer>(this.springUrl+"offer-by-id/"+id)
+  }
+  getOfferByCategory(id:number):Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.springUrl+"offer-by-category/"+id)
+  }
+
+  getCategory(): Observable<Category[]>{
+    return this.http.get<Category[]>(this.springUrl+"catgory");
   }
 }

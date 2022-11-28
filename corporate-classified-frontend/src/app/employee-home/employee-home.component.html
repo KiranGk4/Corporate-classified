@@ -137,9 +137,12 @@
             Filter By Category
           </button>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Bike</a></li>
-            <li><a class="dropdown-item" href="#">House</a></li>
-            <li><a class="dropdown-item" href="#">Car</a></li>
+            <li><button (click)="filterByCategory(1)" style="border: none; background-color: transparent;">House</button></li>
+            <li><button (click)="filterByCategory(2)" style="border: none; background-color: transparent;">Bike</button></li>
+            <li><button (click)="filterByCategory(3)" style="border: none; background-color: transparent;">Car</button></li>
+            
+            <!-- <li *ngFor="let c of category"><a (click)="filterByCategory(c.categoryId)">{{ c.categoryName }}</a></li> -->
+            <!-- <li><a (click)=filterByCategory(c.categoryId)>{{ c.categoryName }}</a></li> -->
           </ul>
         </div>
       </div>

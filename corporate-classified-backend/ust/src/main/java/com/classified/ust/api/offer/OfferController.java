@@ -67,6 +67,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/offer-by-category/{id}")
     public ResponseEntity <List<OfferDto>> getOfferByCategory(@PathVariable Long id) {
         try {

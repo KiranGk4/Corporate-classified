@@ -26,4 +26,5 @@ export class OfferDetailComponent implements OnInit {
       }
     )
   }
+ 
 }

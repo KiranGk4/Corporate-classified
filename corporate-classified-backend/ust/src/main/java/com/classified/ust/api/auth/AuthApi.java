@@ -39,8 +39,8 @@ public class AuthApi {
                             authRequest.getPassword())
             );
             Employee user = (Employee) authentication.getPrincipal();
-            String accessToken = "UST Access Token";
-            //String accessToken=jwtTokenUtil.generateAccessToken(user);
+            //String accessToken = "UST Access Token";
+            String accessToken=jwtTokenUtil.generateAccessToken(user);
             AuthResponse response = new AuthResponse(user.getEmployeeEmail(), accessToken);
             return ResponseEntity.ok(response);
         } catch (BadCredentialsException badCredentialsException) {

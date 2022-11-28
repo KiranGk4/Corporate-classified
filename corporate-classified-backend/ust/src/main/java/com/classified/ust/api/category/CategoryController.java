@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Set;
 
 @RestController
 @Slf4j
+@CrossOrigin("http://localhost:4200")
 public class CategoryController {
     @Autowired
     CategoryService categoryService;
@@ -49,4 +51,22 @@ public class CategoryController {
         }
     }
 
+    @GetMapping("/category")
+    public ResponseEntity<List<CategoryDto>> getCategory()
+    {
+        try
+        {
+            List<Category> category = categoryService.getCategoryAll();
+            List<CategoryDto> categoryDto = categoryService.convertToCategoryDto(category);
+            return new ResponseEntity<List<CategoryDto>>(categoryDto, HttpStatus.OK);
+        }
+        catch (NoSuchElementException e)
+        {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        catch (Exception e)
+        {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
 }

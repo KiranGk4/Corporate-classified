@@ -20,4 +20,8 @@ export class OfferService {
   getOffer(id: number): Observable<Offer>{
     return this.http.get<Offer>(this.springUrl+"offer-by-id/"+id)
   }
+
+  getOfferById(id: number): Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.springUrl+"offer-by-employee/"+id)
+  }
 }

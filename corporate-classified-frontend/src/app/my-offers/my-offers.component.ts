@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Offer } from '../interfaces/offer';
+import { OfferService } from '../services/offer/offer.service';
+
 
 
 @Component({
@@ -8,17 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyOffersComponent implements OnInit {
 
-  pageTitle: string = "My Offers";
-  post: string = "19/11/2022";
-  engage: string = "not yet";
-  status: string = "open";
-  category: string = "Apartments";
-  price: string = "20K";
-  Negotiable: string = "Yes";
-  Likes: number = 3;
-  constructor() { }
+  
+  offers: Offer[] = [];
+  constructor(private offerService: OfferService) { }
 
   ngOnInit(): void {
+    const id=1; 
+    this.offerService.getOfferById(id).subscribe(
+      data => {
+        this.offers = data;
+        console.log(this.offers);
+      }
+    )
+
     
   }
 

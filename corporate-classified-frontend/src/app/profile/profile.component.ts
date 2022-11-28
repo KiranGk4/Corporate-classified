@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileComponent implements OnInit {
 
+   name: string="insaf";
+   address:string="Panthalloor House Thelakkad Po"
+   contactNo:string="9495105768"
+   email:string="mohammedinsafp@gmail.com"
+
   constructor() { }
 
   ngOnInit(): void {
+    
   }
 
 }

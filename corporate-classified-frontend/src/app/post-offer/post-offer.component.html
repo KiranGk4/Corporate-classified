@@ -134,49 +134,50 @@
       </div>
       <div class="card-body">
 
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Title</label>
-          <input type="text" class="form-control" id="offer-title" placeholder="Post Title">
-        </div>
-
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Description</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Post description"></textarea>
-        </div>
-
-        <form class="g-3">
+        <form [formGroup]="offerForm" (ngSubmit)="onSubmit()">
           <div class="mb-3">
-            <label for="category" class="form-label">Choose Category</label>
-            <select id="category" class="form-select">
-              <option >Disabled select</option>
-            </select>
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input type="text" class="form-control" formControlName="offerTitle" id="offer-title" placeholder="Post Title">
           </div>
   
           <div class="mb-3">
-            <label for="exampleFormControlInput1" class="form-label">Price</label>
-            <input type="text" class="form-control" id="offer-price" placeholder="$">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea class="form-control" formControlName="offerDescription" id="exampleFormControlTextarea1" rows="3" placeholder="Post description"></textarea>
+          </div>
+  
+            <div class="mb-3">
+              <label for="category" class="form-label">Choose Category</label>
+              <select id="category" formControlName="category" class="form-control">
+                <option id="categoryId" *ngFor="let c of category" value="{{ c.categoryId }}">{{ c.categoryName }}</option>
+              </select>
+            </div>
+    
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Price</label>
+              <input type="text" class="form-control" formControlName="offerPrice" id="offer-price" placeholder="$">
+            </div>
+  
+          <div class="form-check form-check-inline p-1">
+            <label for="negotiable" class="">Negotiable ?</label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" formControlName="offerNegotiable" type="radio" name="offerNegotiable" value="1" id="offer-negotiable-true">
+            <label class="form-check-label" for="offer-negotiable-true">
+              Yes
+            </label>
+          </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="offerNegotiable" value="0" id="offer-negotiable-false" checked>
+            <label class="form-check-label" for="offer-negotiable-false">
+              No
+            </label>
+          </div>
+  
+          <div class="p-2">
+            <button type="button" type="submit" class="btn btn-primary">Submit</button>
           </div>
         </form>
-
-        <div class="form-check form-check-inline p-1">
-          <label for="category" class="">Negotiable ?</label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="negotiable" value="1" id="offer-negotiable-true">
-          <label class="form-check-label" for="yes">
-            Yes
-          </label>
-        </div>
-        <div class="form-check form-check-inline">
-          <input class="form-check-input" type="radio" name="negotiable" value="0" id="offer-negotiable-false" checked>
-          <label class="form-check-label" for="no">
-            No
-          </label>
-        </div>
-
-        <div class="p-2">
-          <button type="button" class="btn btn-primary">Submit</button>
-        </div>
+        
       </div>
     </div>
   </div>

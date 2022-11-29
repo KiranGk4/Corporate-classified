@@ -21,6 +21,7 @@ public class OfferController {
     @Autowired
     OfferService offerService;
 
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/offer-by-employee/{id}")
     public ResponseEntity<Set<OfferDto>> getOffer(@PathVariable Long id)
     {
@@ -52,8 +53,9 @@ public class OfferController {
         }
     }
 
-    @PutMapping("/update-offer")
-    public ResponseEntity<OfferDto> updateOffer(@RequestBody Offer offer)
+    @CrossOrigin("http://localhost:4200/")
+    @PutMapping("/update-offer/{id}")
+    public ResponseEntity<OfferDto> updateOffer(@RequestBody Offer offer,@PathVariable Long id)
     {
         try
         {

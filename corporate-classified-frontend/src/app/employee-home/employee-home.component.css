@@ -169,6 +169,9 @@ a.article:hover {
     font-size: xx-large;
     
 }
+.dropdown{
+    min-width: 20px;
+}
 
 
 

@@ -80,6 +80,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/offer-by-date/{date}")
     public ResponseEntity <Set<OfferDto>> getOfferByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         try {

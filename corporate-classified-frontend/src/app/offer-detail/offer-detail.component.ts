@@ -26,5 +26,8 @@ export class OfferDetailComponent implements OnInit {
       }
     )
   }
- 
+/* myFunction() {
+   var element = document.getElementById("like");
+   element.classList.toggle("fa-thumbs-down");
+  }*/
 }

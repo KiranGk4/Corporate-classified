@@ -28,4 +28,7 @@ export class OfferService {
   getCategory(): Observable<Category[]>{
     return this.http.get<Category[]>(this.springUrl+"catgory");
   }
+  getOfferByDate(date:string):Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.springUrl+"offer-by-date/"+date)
+  }
 }

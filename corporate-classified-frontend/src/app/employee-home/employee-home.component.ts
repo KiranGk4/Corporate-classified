@@ -44,4 +44,14 @@ export class EmployeeHomeComponent implements OnInit {
   // console.log(categoryId);
   // this.route.navigate(['/main-page/employee-home/'+categoryId]);
   }
+  filterByDate(date:string):void{
+    console.log(date);
+    this.offerService.getOfferByDate(date).subscribe(
+     data => {
+       this.offers = data;
+       console.log(this.offers);
+}
+    )
+}
+
 }

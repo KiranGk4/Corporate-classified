@@ -11,9 +11,9 @@
             <p class="card-text">Category: {{ offer.category.categoryName }}</p>
             <p class="card-text">Likes:{{ offer.offerLikes }}</p>
             <div style="padding-bottom: 3px;">
-              <a href="#" class="btn btn-primary btn-md btn-block" style="width: 100%;">Open</a>
+              <a (click)=goToOfferDetails(offer.offerId) class="btn btn-primary btn-md btn-block" style="width: 100%;">Open</a>
             </div>
-            <a href="#" class="btn btn-danger btn-md btn-block" style="width: 100%;">Edit</a>
+            <a class="btn btn-danger btn-md btn-block" style="width: 100%;" (click)="goToEditOffer(offer.offerId)">Edit</a>
           </div>
         </div>
       </div>

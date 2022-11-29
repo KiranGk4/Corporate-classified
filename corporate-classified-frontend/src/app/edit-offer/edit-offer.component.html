@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-sm-8">
+      <div class="card m-5 shadow">
+        <div class="card-header m-0 p-2">
+          <h2>Edit an Offer</h2>
+        </div>
+        <form [formGroup]="editOffer" (ngSubmit)="updateOffer()">
+          <div class="card-body">
+  
+            <div class="mb-3">
+              <label for="exampleFormControlInput1" class="form-label">Title</label>
+              <input type="text" class="form-control" formControlName="offerTitle" id="offer-title"  placeholder="Post Title">
+            </div>
+    
+            <div class="mb-3">
+              <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+              <textarea class="form-control" formControlName="offerDescription" id="exampleFormControlTextarea1" rows="3" placeholder="Post description"></textarea>
+            </div>
+    
+            <form class="g-3">
+              <div class="mb-3">
+                <label for="category" class="form-label">Choose Category</label>
+                <select id="category" name="category" class="form-select">
+                  <option >Disabled select</option>
+                </select>
+              </div>
+      
+              <div class="mb-3">
+                <label for="exampleFormControlInput1" class="form-label">Price</label>
+                <input type="text" class="form-control" formControlName="offerPrice" id="offer-price" placeholder="$">
+              </div>
+            </form>
+    
+            <div class="form-check form-check-inline p-1">
+              <label for="negotiable" class="">Negotiable ?</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="offerNegotiable" value=true id="offer-negotiable-true">
+              <label class="form-check-label" for="yes">
+                Yes
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" formControlName="offerNegotiable" value=false id="offer-negotiable-false">
+              <label class="form-check-label" for="no">
+                No
+              </label>
+            </div>
+    
+            <div class="p-2">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>

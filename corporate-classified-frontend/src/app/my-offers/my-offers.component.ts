@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Route, Router } from '@angular/router';
 import { Offer } from '../interfaces/offer';
 import { OfferService } from '../services/offer/offer.service';
 
@@ -13,7 +14,7 @@ export class MyOffersComponent implements OnInit {
 
   
   offers: Offer[] = [];
-  constructor(private offerService: OfferService) { }
+  constructor(private offerService: OfferService,private route: Router) { }
 
   ngOnInit(): void {
     const id=1; 
@@ -22,9 +23,15 @@ export class MyOffersComponent implements OnInit {
         this.offers = data;
         console.log(this.offers);
       }
-    )
-
-    
+    )  
   }
 
+  goToOfferDetails(offerId: number): void{
+    console.log(offerId);
+    this.route.navigate(['/main-page/offer-detail/'+offerId]);
+  }
+
+  goToEditOffer(offerId: number): void{
+    this.route.navigate(['/main-page/edit-offer/'+offerId]);
+  }
 }

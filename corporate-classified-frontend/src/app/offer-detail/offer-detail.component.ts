@@ -11,7 +11,7 @@ import { OfferService } from '../services/offer/offer.service';
 export class OfferDetailComponent implements OnInit {
 
   offer: Offer | undefined;
-
+  likes: boolean = false;
   constructor(
     private offerService: OfferService,
     private activatedRoute: ActivatedRoute) { }
@@ -26,8 +26,9 @@ export class OfferDetailComponent implements OnInit {
       }
     )
   }
-/* myFunction() {
-   var element = document.getElementById("like");
-   element.classList.toggle("fa-thumbs-down");
-  }*/
+
+  like(): void{
+    this.likes = true;
+    //this.offer?.offerLikes = this.offer?.offerLikes + 1;
+  }
 }

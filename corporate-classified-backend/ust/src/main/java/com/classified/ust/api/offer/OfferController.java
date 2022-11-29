@@ -17,6 +17,7 @@ import java.util.Set;
 
 @RestController
 @Slf4j
+
 public class OfferController {
     @Autowired
     OfferService offerService;
@@ -37,6 +38,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @PostMapping("/post-offer")
     public ResponseEntity<OfferDto> addOffer(@RequestBody Offer offer)
     {

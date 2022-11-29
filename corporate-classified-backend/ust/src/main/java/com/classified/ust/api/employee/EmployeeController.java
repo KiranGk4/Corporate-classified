@@ -49,6 +49,7 @@ public class EmployeeController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/employee-email/{email}")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable String email)
     {

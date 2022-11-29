@@ -1,6 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { Category } from 'src/app/interfaces/category';
+import { Employee } from 'src/app/interfaces/employee';
 import { Offer } from 'src/app/interfaces/offer';
 
 @Injectable({
@@ -20,4 +22,30 @@ export class OfferService {
   getOffer(id: number): Observable<Offer>{
     return this.http.get<Offer>(this.springUrl+"offer-by-id/"+id)
   }
+
+  getOfferByCategory(id:number):Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.springUrl+"offer-by-category/"+id)
+  }
+
+  getCategory(): Observable<Category[]>{
+    return this.http.get<Category[]>(this.springUrl+"catgory");
+  }
+  
+  getOfferByDate(date:string):Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.springUrl+"offer-by-date/"+date)
+  }
+
+  getEmployeeDetails(id: number): Observable<Employee>{
+    return this.http.get<Employee>(this.springUrl+"employee/"+id)
+  }
+
+  getOfferById(id: number): Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.springUrl+"offer-by-employee/"+id)
+  }
+
+  updateOffer(id: number,data:any){
+   // const headers = new HttpHeaders({'Content-Type' : 'application/json; charset=utf-8'});
+    return this.http.put(this.springUrl+"update-offer/"+id,data);
+  }
 }
+

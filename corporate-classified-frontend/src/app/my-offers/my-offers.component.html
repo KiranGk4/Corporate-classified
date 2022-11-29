@@ -1,0 +1,20 @@
+<main class="row overflow-auto" >
+      <div class="col-sm-4 col-md-4" *ngFor = "let offer of offers">
+        <div class="card m-3">
+          <div class="card-body p-4">
+            <div class="container-fluid" > 
+              <h1 class="card-title"><i class="fa fa-car" style="padding-top: 0.2cm;" aria-hidden="true"></i></h1>
+            </div>
+            <p class="card-text">Title: {{ offer.offerTitle }}</p>
+            <p class="card-text">Posted date: {{ offer.offerOpenedDate }}</p>
+            <p class="card-text">Status: {{ offer.offerActive }}</p>
+            <p class="card-text">Category: {{ offer.category.categoryName }}</p>
+            <p class="card-text">Likes:{{ offer.offerLikes }}</p>
+            <div style="padding-bottom: 3px;">
+              <a (click)=goToOfferDetails(offer.offerId) class="btn btn-primary btn-md btn-block" style="width: 100%;">Open</a>
+            </div>
+            <a class="btn btn-danger btn-md btn-block" style="width: 100%;" (click)="goToEditOffer(offer.offerId)">Edit</a>
+          </div>
+        </div>
+      </div>
+</main> 

@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/interfaces/category';
@@ -22,6 +22,7 @@ export class OfferService {
   getOffer(id: number): Observable<Offer>{
     return this.http.get<Offer>(this.springUrl+"offer-by-id/"+id)
   }
+
   getOfferByCategory(id:number):Observable<Offer[]>{
     return this.http.get<Offer[]>(this.springUrl+"offer-by-category/"+id)
   }
@@ -37,4 +38,14 @@ export class OfferService {
   getEmployeeDetails(id: number): Observable<Employee>{
     return this.http.get<Employee>(this.springUrl+"employee/"+id)
   }
+
+  getOfferById(id: number): Observable<Offer[]>{
+    return this.http.get<Offer[]>(this.springUrl+"offer-by-employee/"+id)
+  }
+
+  updateOffer(id: number,data:any){
+   // const headers = new HttpHeaders({'Content-Type' : 'application/json; charset=utf-8'});
+    return this.http.put(this.springUrl+"update-offer/"+id,data);
+  }
 }
+

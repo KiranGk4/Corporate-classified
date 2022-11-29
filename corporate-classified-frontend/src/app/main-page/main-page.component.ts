@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -16,5 +16,13 @@ export class MainPageComponent implements OnInit {
   logout(){
     sessionStorage.clear();
     this.route.navigate(['/home']);
+  }
+
+  goToProfile(): void{
+    this.route.navigate(['/main-page/profile/'])
+  }
+
+  goToPostAnOffer(): void{
+    this.route.navigate(['/main-page/post-offer/'])
   }
 }

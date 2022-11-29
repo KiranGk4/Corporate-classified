@@ -131,17 +131,31 @@
 <div class="row bg-primary">
   
   <!-- <div class="row" style="margin-bottom: 0cm;margin-top: 0cm;"> -->
-      <div class="col-sm-1 p-2"  style="margin-bottom:0cm; width: 60%;" align="right">
-        <button type="button" class="btn bg-secondary" >Filter by category</button>
+      <div class="col-sm-1 p-2"  style="margin-right:0px; width: auto;" >
+        <div class="dropdown">
+        
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width:190px;">
+            Filter By Category
+          </button>
+          <ul class="dropdown-menu">
+            <li><button (click)="ngOnInit()" style="border: none; background-color: transparent;">All</button></li>
+            <li><button (click)="filterByCategory(1)" style="border: none; background-color: transparent;">Home</button></li>
+            <li><button (click)="filterByCategory(2)" style="border: none; background-color: transparent;">Bike</button></li>
+            <li><button (click)="filterByCategory(3)" style="border: none; background-color: transparent;">Car</button></li>
+            
+            <!-- <li *ngFor="let c of category"><a (click)="filterByCategory(c.categoryId)">{{ c.categoryName }}</a></li> -->
+            <!-- <li><a (click)=filterByCategory(c.categoryId)>{{ c.categoryName }}</a></li> -->
+          </ul>
+        </div>
       </div>
-      <div class="col-sm-3 p-2"  style="margin-bottom:0cm; width: 15%;" align="right">
+      <!--<div class="col-sm-3 p-2"  style="margin-right:0px; width: auto;" >
         <button type="button" class="btn bg-secondary" >Filter by top likes</button>
-      </div>
-      <div class="col-sm-1 p-1"  style="margin-bottom:0cm; width: 25%;" align="rigth">
+      </div>-->
+      <div class="col-sm-1 p-1"  style="margin-right:0px; width: auto;">
         <div class="rightNav">
           <ul class="nav-list">
-            <li><input type="text" name="search" id="search" placeholder="filter by posted-date"></li>
-            <li><button class="btn">Search</button></li>
+            <li><input type="text" #todo matInput name="todo" id="search" placeholder="filter by posted-date"></li>
+            <li><button class="btn" (click)="filterByDate(todo.value)">Search</button></li>
           </ul>
         </div>
      </div>
@@ -149,12 +163,12 @@
 </div>
 <main class="row overflow-auto" >
     <div class="col-sm-4 col-md-4" *ngFor = "let offer of offers">
-      <div class="card m-3">
+      <div class="card m-3 shadow">
         <div class="card-body p-4">
           <div class="container-fluid" > 
-            <h1 class="card-title" align="center"><i class="fa fa-car" style="padding-top: 0.2cm;" aria-hidden="true"></i></h1>
+            < <h1 class="card-title"><i class="fa fa-car" style="padding-top: 0.2cm;" aria-hidden="true"></i></h1>
           </div>
-          <p class="card-text">Title: {{ offer.offerTitle }}</p>
+          <p class="card-text" >Title: {{ offer.offerTitle }}</p>
           <p class="card-text">Posted date: {{ offer.offerOpenedDate }}</p>
           <p class="card-text">Status:  {{ offer.offerActive }}</p>
           <p class="card-text">Catagory:  {{ offer.category.categoryName }}</p>

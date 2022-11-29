@@ -16,6 +16,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
+import { EditOfferComponent } from './edit-offer/edit-offer.component';
 import { AuthGuard } from './auth.guard';
 
 
@@ -31,7 +32,8 @@ import { AuthGuard } from './auth.guard';
     HomeComponent,
     EmployeeHomeComponent,
     MainPageComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    EditOfferComponent
   ],
   imports: [
     BrowserModule,

@@ -22,6 +22,7 @@ public class OfferController {
     @Autowired
     OfferService offerService;
 
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/offer-by-employee/{id}")
     public ResponseEntity<Set<OfferDto>> getOffer(@PathVariable Long id)
     {
@@ -54,8 +55,9 @@ public class OfferController {
         }
     }
 
-    @PutMapping("/update-offer")
-    public ResponseEntity<OfferDto> updateOffer(@RequestBody Offer offer)
+    @CrossOrigin("http://localhost:4200/")
+    @PutMapping("/update-offer/{id}")
+    public ResponseEntity<OfferDto> updateOffer(@RequestBody Offer offer,@PathVariable Long id)
     {
         try
         {
@@ -69,6 +71,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/offer-by-category/{id}")
     public ResponseEntity <List<OfferDto>> getOfferByCategory(@PathVariable Long id) {
         try {
@@ -81,6 +84,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/offer-by-date/{date}")
     public ResponseEntity <Set<OfferDto>> getOfferByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         try {

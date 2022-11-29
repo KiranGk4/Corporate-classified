@@ -40,6 +40,7 @@
 									<button type="submit" class="btn btn-primary">Sign In</button>
 				
 									<br/><br>
+									<span ng-show="logform.$submitted && logform.user.$error.required && logform.pwd.$error.required"><div class="text-danger"><br>Invalid Username/Password</div></span>
 									<!-- <span>Inavild username/password..!</span> -->
 									<!--<a href="#"><p class="small">Forgot your password?</p></a>-->
 								</div>

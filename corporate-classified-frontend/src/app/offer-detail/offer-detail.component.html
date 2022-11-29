@@ -31,8 +31,12 @@
                 <dt class="col-sm-3">Likes</dt>
                 <dd class="col-sm-9">{{ offer.offerLikes }}</dd>
                 <br>
+
                 <dt class="col-sm-3">Liked ?</dt>
-                <dd class="col-sm-9"><button onclick="liked()"><i class="fa fa-thumbs-o-up" id="like" aria-hidden="true"></i></button></dd>
+                <dd class="col-sm-9"><button name="btn-like" type="button" (click)="like()">
+                  <i class="fa fa-thumbs-o-up" *ngIf="!likes" id="like" aria-hidden="true"></i>
+                  <i class="fa fa-thumbs-up"  *ngIf="likes" aria-hidden="true"></i>
+                </button></dd>
                 
               </dl>
               

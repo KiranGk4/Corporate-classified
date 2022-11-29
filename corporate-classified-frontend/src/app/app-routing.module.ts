@@ -10,9 +10,10 @@ import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { PostOfferComponent } from './post-offer/post-offer.component';
 import { ProfileComponent } from './profile/profile.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
-  {path: 'main-page', component: MainPageComponent,
+  {path: 'main-page', component: MainPageComponent, canActivate: [AuthGuard],
     children: [
       { path: 'profile', component: ProfileComponent},
       {path: 'post-offer', component: PostOfferComponent},

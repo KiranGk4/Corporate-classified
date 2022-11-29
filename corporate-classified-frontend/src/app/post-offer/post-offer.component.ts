@@ -32,15 +32,16 @@ export class PostOfferComponent implements OnInit {
       offerDescription: new FormControl('', Validators.maxLength(100)),
       category: new FormControl(),
       offerPrice: new FormControl(0),
-      offerNegotiable: new FormControl(false)
+      offerNegotiable: new FormControl(false),
+      employee: new FormControl(0)
     });
 
-    Object.assign(
-      {},this.offerForm.value,{
-        category:{
-          categoryId: this.offerForm.get('category')?.value},
-      }
-    );
+    // Object.assign(
+    //   {},this.offerForm.value,{
+    //     category:{
+    //       categoryId: this.offerForm.get('category')?.value},
+    //   }
+    // );
   }
 
  
@@ -51,6 +52,9 @@ export class PostOfferComponent implements OnInit {
     {},this.offerForm.value,{
       category:{
         categoryId: this.offerForm.get('category')?.value},
+        employee:{
+          employeeId: sessionStorage.getItem('userId')
+        }
     }
   )).subscribe(data=>{
     this.route.navigate(['/main-page/employee-home']);

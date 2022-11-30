@@ -17,7 +17,6 @@ import java.util.Set;
 
 @RestController
 @Slf4j
-
 public class OfferController {
     @Autowired
     OfferService offerService;
@@ -57,13 +56,29 @@ public class OfferController {
 
     @CrossOrigin("http://localhost:4200/")
     @PutMapping("/update-offer/{id}")
-    public ResponseEntity<OfferDto> updateOffer(@RequestBody Offer offer,@PathVariable Long id)
+    public ResponseEntity<Offer> updateOffer(@RequestBody Offer offer,@PathVariable Long id)
     {
         try
         {
             Offer offer1 = offerService.updateOffer(offer);
-            OfferDto offerDto = offerService.convertToOfferDto(offer1);
-            return new ResponseEntity<>(offerDto,HttpStatus.CREATED);
+            //OfferDto offerDto = offerService.convertToOfferDto(offer1);
+            return new ResponseEntity<>(offer1,HttpStatus.CREATED);
+        }
+        catch (NoSuchElementException e)
+        {
+            return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
+        }
+    }
+
+    @CrossOrigin("http://localhost:4200/")
+    @PutMapping("/engage-offer/{id}")
+    public ResponseEntity<Offer> engageOffer(@RequestBody Offer offer,@PathVariable Long id)
+    {
+        try
+        {
+            Offer offer1 = offerService.engageOffer(offer);
+            //OfferDto offerDto = offerService.convertToOfferDto(offer1);
+            return new ResponseEntity<>(offer1,HttpStatus.CREATED);
         }
         catch (NoSuchElementException e)
         {

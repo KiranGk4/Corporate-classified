@@ -14,4 +14,5 @@ export interface Offer{
     offerNegotiable: boolean;
     employee: Employee;
     category: Category;
+    employeeEngage: number;
 }

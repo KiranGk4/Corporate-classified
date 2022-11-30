@@ -27,7 +27,7 @@ springUrl:string = "http://localhost:8080/";
   }
 
   getCategory(): Observable<Category[]>{
-    return this.http.get<Category[]>(this.springUrl+"catgory");
+    return this.http.get<Category[]>(this.springUrl+"category");
   }
   
   getOfferByDate(date:string):Observable<Offer[]>{
@@ -54,18 +54,14 @@ springUrl:string = "http://localhost:8080/";
     return this.http.post<Offer>(this.springUrl+"post-offer",offer,{headers,observe:'response',responseType:'json'});
   }
 
-  engageOffer(offerId:number,offer:Offer){
-    console.log(offer);
-    return this.http.put(this.springUrl+"engage-offer/"+offerId,offer);
-  }
-
   employeeLogin(loginForm: Login){
     const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})
-    return this.http.post<Login>(this.springUrl+"auth/login",loginForm,{headers,observe:'response',responseType:'json'});
+    return this.http.post<Login>(this.springUrl+"auth/login",loginForm,{headers,observe:'body',responseType:'json'});
   }
 
-  getEmployeeId(email: string): Observable<Employee>{
-    return this.http.get<Employee>(this.springUrl+"employee-email/"+email);
+  engageOffer(offerId: number, offer: Offer){
+    console.log(offer);
+    return this.http.put(this.springUrl+"engage-offer/"+offerId,offer);
   }
 }
 

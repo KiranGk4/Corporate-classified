@@ -7,11 +7,14 @@ import com.classified.ust.api.employee.EmployeeDto;
 import com.classified.ust.api.like.Like;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+
 
 @Data
 public class OfferDto {
@@ -29,8 +32,9 @@ public class OfferDto {
     private boolean offerNegotiable;
     private EmployeeDto employee;      //Employee who posted the offer.
 
-    private EmployeeDto employeeEngage;
+    private long employeeEngage;
 
     private CategoryDto category;
+
 
 }

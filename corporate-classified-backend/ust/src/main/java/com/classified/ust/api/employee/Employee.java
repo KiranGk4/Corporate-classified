@@ -52,10 +52,6 @@ public class Employee implements UserDetails {
     @JoinColumn(name = "employee_details_id")
     private EmployeeDetails employeeDetails;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "employeeEngage")
-    @Column(name = "employee_engage_offer_id")
-    private Set<Offer> offerSet;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;

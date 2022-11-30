@@ -39,13 +39,17 @@ export class OfferDetailComponent implements OnInit {
     //this.offer?.offerLikes = this.offer?.offerLikes + 1;
   }
 
-  engage(offerId: number){
+  engage(offerId:number){
     this.offerService.getOffer(offerId).subscribe(
-      data => {
-        this.offer = data;
+      data=>{
+        this.offer=data;
       }
     );
+    console.log(JSON.stringify(Object.assign({},this.offer,{employeeEngage: Number(sessionStorage.getItem('userId'))})))
+
+  
     console.log(JSON.stringify(Object.assign({},this.offer,{ employeeEngage: Number(sessionStorage.getItem('userId'))})))
+
     this.offerService.engageOffer(offerId, this.offer).subscribe({});
   }
 }

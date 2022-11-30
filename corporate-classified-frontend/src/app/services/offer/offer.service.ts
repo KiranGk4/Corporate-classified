@@ -53,6 +53,7 @@ springUrl:string = "http://localhost:8080/";
    // const httpHeader = new Headers()
     return this.http.post<Offer>(this.springUrl+"post-offer",offer,{headers,observe:'response',responseType:'json'});
   }
+
   getEmployeeId(email: string): Observable<Employee>{
     return this.http.get<Employee>(this.springUrl+"employee-email/"+email);
   }

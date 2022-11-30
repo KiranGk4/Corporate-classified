@@ -27,7 +27,9 @@ export class EditOfferComponent implements OnInit {
     category: new FormControl(0)
    });
 
-  constructor(private offerService: OfferService,private route: ActivatedRoute, private route1: Router,private toast: NgToastService ) { }
+
+  constructor(private offerService: OfferService,private route: ActivatedRoute, private route1: Router, private toast: NgToastService) { }
+
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.params['id']);
@@ -69,11 +71,12 @@ export class EditOfferComponent implements OnInit {
   updateOffer(){
     console.log(this.editOffer.value);
     this.offerService.updateOffer(this.editOfferId,Object.assign(
-      {},this.editOffer.value,{
-        category:{
-          categoryId: this.editOffer.get('category')?.value},
-      }
-    )).subscribe((result)=>{
+         {},this.editOffer.value,{
+           category:{
+             categoryId: this.editOffer.get('category')?.value},
+         }
+       )).subscribe((result)=>{
+      this.route1.navigate(['/main-page/my-offers'])
       this.toast.success({detail:"SucessMessage",summary:"Updated Sucessfully",duration:5000})
       console.log(result);
     },err=>{

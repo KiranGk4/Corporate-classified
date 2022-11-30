@@ -17,6 +17,7 @@ import java.util.Set;
 
 @RestController
 @Slf4j
+
 public class OfferController {
     @Autowired
     OfferService offerService;
@@ -37,6 +38,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @PostMapping("/post-offer")
     public ResponseEntity<OfferDto> addOffer(@RequestBody Offer offer)
     {
@@ -69,6 +71,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/offer-by-category/{id}")
     public ResponseEntity <List<OfferDto>> getOfferByCategory(@PathVariable Long id) {
         try {
@@ -81,6 +84,7 @@ public class OfferController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200/")
     @GetMapping("/offer-by-date/{date}")
     public ResponseEntity <Set<OfferDto>> getOfferByDate(@PathVariable @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
         try {

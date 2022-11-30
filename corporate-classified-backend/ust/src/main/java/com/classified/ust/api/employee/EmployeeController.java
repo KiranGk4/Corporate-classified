@@ -17,6 +17,7 @@ public class EmployeeController {
     @Autowired
     EmployeeService employeeService;
 
+    @CrossOrigin("http://localhost:4200")
    @GetMapping("/employee/{id}")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable Long id)
     {
@@ -48,6 +49,7 @@ public class EmployeeController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/employee-email/{email}")
     public ResponseEntity<EmployeeDto> getEmployee(@PathVariable String email)
     {

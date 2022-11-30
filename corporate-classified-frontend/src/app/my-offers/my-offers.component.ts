@@ -4,7 +4,6 @@ import { Offer } from '../interfaces/offer';
 import { OfferService } from '../services/offer/offer.service';
 
 
-
 @Component({
   selector: 'app-my-offers',
   templateUrl: './my-offers.component.html',
@@ -12,9 +11,9 @@ import { OfferService } from '../services/offer/offer.service';
 })
 export class MyOffersComponent implements OnInit {
 
-  
   offers: Offer[] = [];
   constructor(private offerService: OfferService,private route: Router) { }
+
 
   ngOnInit(): void {
     const id=1; 

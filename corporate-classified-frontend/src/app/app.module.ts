@@ -17,8 +17,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditOfferComponent } from './edit-offer/edit-offer.component';
+import { AuthGuard } from './auth.guard';
 import { NgToastModule } from 'ng-angular-popup';
-
 
 
 @NgModule({
@@ -44,7 +44,7 @@ import { NgToastModule } from 'ng-angular-popup';
     ReactiveFormsModule,
     NgToastModule
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

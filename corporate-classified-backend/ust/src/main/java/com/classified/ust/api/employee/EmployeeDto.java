@@ -10,6 +10,7 @@ import java.util.Set;
 
 @Data
 public class EmployeeDto {
+    private long employeeId;
     private String employeeEmail;
     private boolean employeeActive;
 

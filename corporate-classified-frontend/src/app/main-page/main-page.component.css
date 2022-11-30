@@ -52,7 +52,7 @@ main {
     background-color: pink;
 }
 .col{
- 
+
     background-image: url("/assets/images/234.png");
 
     background-repeat: no-repeat;
@@ -71,3 +71,5 @@ main {
         padding-left: 220px; /* 180 + 40 */
     }
 } 
+
+

@@ -1,8 +1,15 @@
-.table,th,td{
+.th,td{
     border: 0px solid rgb(229, 229, 235);
     font-family: 'Times New Roman', Times, serif;
     padding-left: 3ex;
 }
+.table{
+    border: 0px solid rgb(229, 229, 235);
+    font-family: 'Times New Roman', Times, serif;
+    padding-left: 3ex;
+    border-radius: 1cm;
+}    
+
 .rightNav {
     width: 50;
     text-align: right;
@@ -125,7 +132,7 @@
     background-color: #000;
 }
 .card{
-    border-radius: 1cm;
+    border-radius: 0cm;
     background-color: rgb(255, 255, 255);
     
 }

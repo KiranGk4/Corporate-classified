@@ -10,8 +10,8 @@ import { OfferService } from '../services/offer/offer.service';
 })
 export class OfferDetailComponent implements OnInit {
 
-  offer: Offer | any;
-
+  offer: Offer | undefined;
+  likes: boolean = false;
   constructor(
     private offerService: OfferService,
     private activatedRoute: ActivatedRoute) { }
@@ -25,6 +25,11 @@ export class OfferDetailComponent implements OnInit {
         console.log(this.offer);
       }
     )
+  }
+
+  like(): void{
+    this.likes = true;
+    //this.offer?.offerLikes = this.offer?.offerLikes + 1;
   }
 
   engage(offerId:number){

@@ -48,8 +48,8 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests().anyRequest().permitAll();
 
-       // http.authorizeRequests().antMatchers("/auth/login").permitAll()
-               // .anyRequest().authenticated();
+       //http.authorizeRequests().antMatchers("/**").permitAll()
+               //.anyRequest().authenticated();
 
 
 

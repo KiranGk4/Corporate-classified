@@ -1,12 +1,4 @@
-<!--<title>Corperate Classifieds</title>
-	<div style="height:150px;padding: 0;">
-		
-	   <header class="py-5"  style="height: 2%; background-color:rgb(2, 2, 59);">
-		
-				<div class="top text-white">
-					<h1 id="title" class="hidden"><span id="logo ">Corperate Classifieds</span></h1>
-				</div>-->
-				
+
 <nav class="navbar navbar-expand-lg bg-light bg-transparent">
 	<a class="navbar-brand" href="#"><b><i>Corperate Classifieds</i></b></a>
 	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,27 +24,31 @@
 					<div class="box-header text-primary"><br><br>
 				
 						<div class="card mb-6">
-							<div class="card-body pt-2 pb-2 text-center text-primary ">
+							<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+								<div class="card-body pt-2 pb-2 text-center text-primary ">
 					
-							<h2>Log In</h2><br>
-								<!--<label for="username" >Username</label>
-								<br/>-->
-								<input class="form-control" type="text" placeholder="Username" required>
+									<h2>Log In</h2><br>
+									<!--<label for="username" >Username</label>
+									<br/>-->
+									<input class="form-control" type="email" formControlName="email" placeholder="Username" required>
 									<br/>
-								<!--<label for="password">Password</label>
-								<br/>-->
-								<input class="form-control" type="text" placeholder="Password"required>
-								<br/>
-
-								<button type="button" class="btn btn-primary" data-bs-toggle="button" routerLink="/home">Sign In</button>
-			
-								<br/><br>
-								<!--<a href="#"><p class="small">Forgot your password?</p></a>-->
+									<!--<label for="password">Password</label>
+									<br/>-->
+									<input class="form-control" type="password" formControlName="password" placeholder="Password" required>
+									<br/>
+	
+									<button type="submit" class="btn btn-primary">Sign In</button>
+				
+									<br/><br>
+									<span ng-show="logform.$submitted && logform.user.$error.required && logform.pwd.$error.required"><div class="text-danger"><br>Invalid Username/Password</div></span>
+									<!-- <span>Inavild username/password..!</span> -->
+									<!--<a href="#"><p class="small">Forgot your password?</p></a>-->
 								</div>
-							</div>
+							</form>
 						</div>
 					</div>
 				</div>
+			</div>
 			
 	     <footer class="background">				
 

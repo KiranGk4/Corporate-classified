@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Offer } from '../interfaces/offer';
 import { OfferService } from '../services/offer/offer.service';
+import{NgToastService} from 'ng-angular-popup';
 
 @Component({
   selector: 'app-edit-offer',
@@ -22,7 +23,7 @@ export class EditOfferComponent implements OnInit {
     offerPrice: new FormControl(0)
    });
 
-  constructor(private offerService: OfferService,private route: ActivatedRoute) { }
+  constructor(private offerService: OfferService,private route: ActivatedRoute,private toast: NgToastService) { }
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.params['id']);
@@ -57,7 +58,11 @@ export class EditOfferComponent implements OnInit {
   updateOffer(){
     console.log(this.editOffer.value);
     this.offerService.updateOffer(this.editOfferId,this.editOffer.value).subscribe((result)=>{
+      this.toast.success({detail:"SucessMessage",summary:"Updated Sucessfully",duration:5000})
       console.log(result);
+    },err=>{
+      this.toast.error({detail:"ErrorMessage",summary:"Update Failed",duration:5000})
+      
     })
   }
 

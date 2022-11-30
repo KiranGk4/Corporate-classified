@@ -17,6 +17,8 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditOfferComponent } from './edit-offer/edit-offer.component';
+import { NgToastModule } from 'ng-angular-popup';
+
 
 
 @NgModule({
@@ -39,7 +41,8 @@ import { EditOfferComponent } from './edit-offer/edit-offer.component';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

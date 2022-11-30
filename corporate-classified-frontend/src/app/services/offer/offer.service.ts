@@ -30,4 +30,9 @@ export class OfferService {
     return this.http.put(this.springUrl+"update-offer/"+id,data);
 
 }
+
+  engageOffer(offerId:number,offer:Offer){
+    console.log(offer);
+    return this.http.put(this.springUrl+"engage-offer/"+offerId,offer);
+  }
 }

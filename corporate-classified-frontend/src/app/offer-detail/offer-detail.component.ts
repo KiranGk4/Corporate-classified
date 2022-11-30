@@ -10,7 +10,7 @@ import { OfferService } from '../services/offer/offer.service';
 })
 export class OfferDetailComponent implements OnInit {
 
-  offer: Offer | undefined;
+  offer: Offer | any;
 
   constructor(
     private offerService: OfferService,
@@ -25,5 +25,15 @@ export class OfferDetailComponent implements OnInit {
         console.log(this.offer);
       }
     )
+  }
+
+  engage(offerId:number){
+    this.offerService.getOffer(offerId).subscribe(
+      data=>{
+        this.offer=data;
+      }
+    );
+    console.log(JSON.stringify(Object.assign({},this.offer,{employeeEngage: Number(sessionStorage.getItem('userId'))})))
+    this.offerService.engageOffer(offerId, this.offer).subscribe({});
   }
 }

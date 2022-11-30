@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { Employee } from '../interfaces/employee';
+import { OfferService } from '../services/offer/offer.service';
 
 @Component({
   selector: 'app-login',
@@ -24,11 +27,11 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.offerService.employeeLogin(this.loginForm.value).subscribe(
       data=>{
-        this.getEmployee(data.email);
+        this.getEmployee(this.loginForm.value.email);
         if(sessionStorage.getItem('userId')){
           this.route.navigate(['/main-page/employee-home']);
         }
-        console.log(data.email);
+        console.log(this.loginForm.value.email);
     },
     error=>{ 
       this.route.navigate(['/home']); })

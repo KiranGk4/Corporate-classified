@@ -10,7 +10,7 @@ import { OfferService } from '../services/offer/offer.service';
 })
 export class OfferDetailComponent implements OnInit {
 
-  offer: Offer | undefined;
+  offer: Offer | any;
   likes: boolean = false;
   constructor(
     private offerService: OfferService,

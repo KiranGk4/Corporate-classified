@@ -40,11 +40,8 @@ public class Offer {
     @JoinColumn(name = "employee_id")
     private Employee employee;      //Employee who posted the offer.
 
-    @ManyToOne
-    @JsonIgnore
-    @JoinColumn(name = "employee_engage_id")
-    private Employee employeeEngage;
-
+    @Column(name = "employee_engage_id")
+    private long employeeEngage;
 
     @ManyToOne
     @JoinColumn(name = "category_id")

@@ -2,7 +2,7 @@
     <div class="col-sm-8">
       <div class="card m-5 shadow">
         <div class="card-header m-0 p-2">
-          <h2>Post an Offer</h2>
+          <h2>Offer Details</h2>
         </div>
         <div class="card-body" *ngIf = "offer">
   
@@ -32,22 +32,18 @@
                 <dd class="col-sm-9">{{ offer.offerLikes }}</dd>
                 <br>
 
-                <dt class="col-sm-3">Liked ?</dt>
-                <dd class="col-sm-9"><button name="btn-like" type="button" (click)="like()">
+                <dt *ngIf="showEngage" class="col-sm-3">Liked ?</dt>
+                <dd *ngIf="showEngage" class="col-sm-9"><button name="btn-like" type="button" (click)="like()">
                   <i class="fa fa-thumbs-o-up" *ngIf="!likes" id="like" aria-hidden="true"></i>
                   <i class="fa fa-thumbs-up"  *ngIf="likes" aria-hidden="true"></i>
                 </button></dd>
                 
+                <dt class="col-sm-3">
+                  <div *ngIf="showEngage" class="btn btn-primary" (click)="engage(offer.offerId)">Engage</div>
+                </dt>
               </dl>
               
         </div>
       </div>
     </div>
   </div>
-  <!-- <script>
-    function liked(){
-    var icon = document.getElementById('like');
-    icon.style.color="black"; -->
-    <!-- //image.style.display = (image.style.color == 'none') ? 'block' : 'none';
-// }; -->
-<!-- //   </script> -->

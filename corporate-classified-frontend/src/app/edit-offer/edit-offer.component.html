@@ -17,11 +17,10 @@
               <textarea class="form-control" formControlName="offerDescription" id="exampleFormControlTextarea1" rows="3" placeholder="Post description"></textarea>
             </div>
     
-            <form class="g-3">
               <div class="mb-3">
                 <label for="category" class="form-label">Choose Category</label>
-                <select id="category" name="category" class="form-select">
-                  <option >Disabled select</option>
+                <select id="category" formControlName="category" class="form-control">
+                  <option id="categoryId" *ngFor="let c of categorys" value="{{ c.categoryId }}">{{ c.categoryName }}</option>
                 </select>
               </div>
       
@@ -29,14 +28,13 @@
                 <label for="exampleFormControlInput1" class="form-label">Price</label>
                 <input type="text" class="form-control" formControlName="offerPrice" id="offer-price" placeholder="$">
               </div>
-            </form>
     
             <div class="form-check form-check-inline p-1">
               <label for="negotiable" class="">Negotiable ?</label>
             </div>
             <div class="form-check form-check-inline">
               <input class="form-check-input" type="radio" formControlName="offerNegotiable" value=true id="offer-negotiable-true">
-              <label class="form-check-label" for="yes">
+              <label class="form-check-label" for="form-check-input">
                 Yes
               </label>
             </div>

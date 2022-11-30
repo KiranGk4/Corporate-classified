@@ -25,4 +25,8 @@ export class MainPageComponent implements OnInit {
   goToPostAnOffer(): void{
     this.route.navigate(['/main-page/post-offer/'])
   }
+
+  goToMyOffers(): void{
+    this.route.navigate(['/main-page/my-offers/'])
+  }
 }

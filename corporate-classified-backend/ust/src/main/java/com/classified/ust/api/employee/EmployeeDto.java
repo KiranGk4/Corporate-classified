@@ -5,8 +5,11 @@ import com.classified.ust.api.employeeDetails.EmployeeDetailsDto;
 import com.classified.ust.api.offer.Offer;
 import com.classified.ust.api.offer.OfferDto;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
+
 
 @Data
 public class EmployeeDto {

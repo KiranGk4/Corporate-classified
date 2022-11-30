@@ -18,7 +18,8 @@ public class Like {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long likeId;
 
-    private String likedBy;
+    @Column(name = "liked_by")
+    private long employeeId;
 
     private LocalDate likeDate;
     private boolean likeActive;

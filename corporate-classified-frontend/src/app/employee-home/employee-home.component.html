@@ -166,14 +166,14 @@
       <div class="card m-3 shadow">
         <div class="card-body p-4">
           <div class="container-fluid" > 
-            < <h1 class="card-title"><i class="fa fa-car" style="padding-top: 0.2cm;" aria-hidden="true"></i></h1>
+            <h1 class="card-title" align="center"><i class="fa fa-shopping-cart" style="padding-top: 0.2cm;"  aria-hidden="true"></i></h1>
           </div>
           <p class="card-text" >Title: {{ offer.offerTitle }}</p>
           <p class="card-text">Posted date: {{ offer.offerOpenedDate }}</p>
           <p class="card-text">Status:  {{ offer.offerActive }}</p>
-          <p class="card-text">Catagory:  {{ offer.category.categoryName }}</p>
+          <p class="card-text">Category:  {{ offer.category.categoryName }}</p>
           <p class="card-text">Like:  {{ offer.offerLikes }}</p>
-          <a href="#" class="btn btn-primary btn-md btn-block" style="width: 100%;">More Details</a>
+          <a class="btn btn-primary btn-md btn-block" (click)="goToOfferDetail(offer.offerId)" style="width: 100%;">More Details</a>
         </div>
       </div>
     </div>

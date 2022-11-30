@@ -16,7 +16,7 @@ export class MyOffersComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const id=1; 
+    const id= Number(sessionStorage.getItem('userId')); 
     this.offerService.getOfferById(id).subscribe(
       data => {
         this.offers = data;

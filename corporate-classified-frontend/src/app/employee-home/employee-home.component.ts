@@ -50,8 +50,11 @@ export class EmployeeHomeComponent implements OnInit {
      data => {
        this.offers = data;
        console.log(this.offers);
-}
+    }
     )
-}
+  }
 
+  goToOfferDetail(offerId: number){
+    this.route.navigate(['/main-page/offer-detail/'+offerId]);
+  }
 }

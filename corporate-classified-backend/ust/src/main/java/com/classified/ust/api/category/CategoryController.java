@@ -51,6 +51,7 @@ public class CategoryController {
         }
     }
 
+    @CrossOrigin("http://localhost:4200")
     @GetMapping("/category")
     public ResponseEntity<List<CategoryDto>> getCategory()
     {

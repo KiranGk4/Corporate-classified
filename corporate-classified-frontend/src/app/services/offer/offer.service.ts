@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/interfaces/category';
 import { Employee } from 'src/app/interfaces/employee';
+import { Login } from 'src/app/interfaces/login';
 import { Offer } from 'src/app/interfaces/offer';
 @Injectable({
   providedIn: 'root'
@@ -26,7 +27,7 @@ springUrl:string = "http://localhost:8080/";
   }
 
   getCategory(): Observable<Category[]>{
-    return this.http.get<Category[]>(this.springUrl+"catgory");
+    return this.http.get<Category[]>(this.springUrl+"category");
   }
   
   getOfferByDate(date:string):Observable<Offer[]>{
@@ -52,8 +53,16 @@ springUrl:string = "http://localhost:8080/";
    // const httpHeader = new Headers()
     return this.http.post<Offer>(this.springUrl+"post-offer",offer,{headers,observe:'response',responseType:'json'});
   }
+  getEmployeeId(email: string): Observable<Employee>{
+    return this.http.get<Employee>(this.springUrl+"employee-email/"+email);
+  }
 
-  engageOffer(offerId:number,offer:Offer){
+  employeeLogin(loginForm: Login){
+    const headers = new HttpHeaders({'Content-Type': 'application/json; charset=utf-8'})
+    return this.http.post<Login>(this.springUrl+"auth/login",loginForm,{headers,observe:'body',responseType:'json'});
+  }
+
+  engageOffer(offerId: number, offer: Offer){
     console.log(offer);
     return this.http.put(this.springUrl+"engage-offer/"+offerId,offer);
   }

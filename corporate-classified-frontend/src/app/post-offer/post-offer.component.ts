@@ -31,7 +31,7 @@ export class PostOfferComponent implements OnInit {
       offerTitle: new FormControl('', Validators.minLength(2)),
       offerDescription: new FormControl('', Validators.maxLength(100)),
       category: new FormControl(),
-      offerPrice: new FormControl(0),
+      offerPrice: new FormControl(),
       offerNegotiable: new FormControl(false),
       employee: new FormControl(0)
     });

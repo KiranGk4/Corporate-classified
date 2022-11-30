@@ -67,6 +67,12 @@ public class OfferService {
         updateOffer.setCategory(offer.getCategory());
         updateOffer.setOfferPrice(offer.getOfferPrice());
         updateOffer.setOfferTitle(offer.getOfferTitle());
+//        long val = offer.getEmployeeEngage();
+//        if(val>0)
+//        {
+//            updateOffer.setOfferEngagedDate(LocalDate.now());
+//            updateOffer.setOfferClosedDate(LocalDate.now());
+//        }
         return offerRepository.save(updateOffer);
     }
 
@@ -112,6 +118,14 @@ public class OfferService {
     public Offer getOfferById(Long offerId) {
         log.info(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"+offerId);
         return offerRepository.findById(offerId).orElseThrow(()->new NoSuchElementException());
+    }
+
+    public Offer engageOffer(Offer offer) {
+        Offer updateOffer = offerRepository.findById(offer.getOfferId()).orElseThrow(()->new NoSuchElementException());
+        updateOffer.setEmployeeEngage(offer.getEmployeeEngage());
+        updateOffer.setOfferEngagedDate(LocalDate.now());
+        updateOffer.setOfferClosedDate(LocalDate.now());
+        return offerRepository.save(updateOffer);
     }
    /* public CategoryDto convertCategoryToDTO(Category category)
     {

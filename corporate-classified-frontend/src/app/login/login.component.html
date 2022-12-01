@@ -10,10 +10,7 @@
 		  <a class="nav-link" href="#">Home </a>
 		</li>
 		<li class="nav-item">
-		  <a class="nav-link" href="#">About</a>
-		</li>
-		<li class="nav-item">
-		  <a class="nav-link" href="#">Contact</a>
+		  <a class="nav-link" routerLink="/contact">Contact</a>
 		</li>
 	  </ul>
 	</div>
@@ -40,7 +37,7 @@
 									<button type="submit" class="btn btn-primary">Sign In</button>
 				
 									<br/><br>
-									<span ng-show="logform.$submitted && logform.user.$error.required && logform.pwd.$error.required"><div class="text-danger"><br>Invalid Username/Password</div></span>
+									<!-- <span ng-show="logform.$submitted && logform.user.$error.required && logform.pwd.$error.required"><div class="text-danger"><br>Invalid Username/Password</div></span> -->
 									<!-- <span>Inavild username/password..!</span> -->
 									<!--<a href="#"><p class="small">Forgot your password?</p></a>-->
 								</div>

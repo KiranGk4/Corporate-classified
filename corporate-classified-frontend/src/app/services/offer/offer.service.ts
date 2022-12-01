@@ -10,7 +10,8 @@ import { Offer } from 'src/app/interfaces/offer';
 })
 export class OfferService {
 
-springUrl:string = "http://localhost:8080/";
+//springUrl:string = "http://corporateclassifieds-env.eba-4pbktvan.us-east-2.elasticbeanstalk.com/";
+springUrl: string = "http://localhost:8080/"
   constructor(private http: HttpClient) { }
 
   /* passed to employee-home*/
@@ -65,6 +66,6 @@ springUrl:string = "http://localhost:8080/";
 
   engageOffer(offerId: number, offer: Offer){
     console.log(offer);
-    return this.http.put(this.springUrl+"engage-offer/"+offerId,offer);
+    return this.http.put(this.springUrl+"engage-offer",offer);
   }
 }

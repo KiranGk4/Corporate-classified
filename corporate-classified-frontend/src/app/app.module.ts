@@ -18,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { ReactiveFormsModule } from '@angular/forms';
 import { EditOfferComponent } from './edit-offer/edit-offer.component';
 import { AuthGuard } from './auth.guard';
+import { NgToastModule } from 'ng-angular-popup';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { AuthGuard } from './auth.guard';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgToastModule
   ],
   providers: [AuthGuard],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 import { Employee } from '../interfaces/employee';
 import { OfferService } from '../services/offer/offer.service';
 
@@ -12,7 +13,7 @@ import { OfferService } from '../services/offer/offer.service';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup | any;
   employee: Employee | any;
-  constructor(private formBuilder: FormBuilder,private offerService: OfferService, private route: Router) { }
+  constructor(private formBuilder: FormBuilder,private offerService: OfferService, private route: Router, private toast: NgToastService) { }
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group(
@@ -31,10 +32,12 @@ export class LoginComponent implements OnInit {
         if(sessionStorage.getItem('userId')){
           this.route.navigate(['/main-page/employee-home']);
         }
+        // this.toast.success({detail:"SuccessMessage", summary:"Login success", duration:5000})
         console.log(data.email);
     },
     error=>{ 
-      this.route.navigate(['/home']); })
+      this.toast.error({detail:"Error", summary:"Invalid username/password", duration:5000})
+      this.route.navigate(['/login']); })
   }
 
   getEmployee(email: string){

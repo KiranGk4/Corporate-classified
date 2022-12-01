@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Route, Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 //import { Offer } from '../class/offer';
 import { Category } from '../interfaces/category';
 import { Offer } from '../interfaces/offer';
@@ -17,7 +18,7 @@ export class PostOfferComponent implements OnInit {
   // offer: Offer = new Offer("","",0,0);
   //offerForm: FormGroup;
   //offerForm: Offer | undefined;
-  constructor(private offerService: OfferService, private formBuilder: FormBuilder, private route:Router) { }
+  constructor(private offerService: OfferService, private formBuilder: FormBuilder, private route:Router, private toast: NgToastService) { }
 
   ngOnInit(): void {
 
@@ -57,7 +58,8 @@ export class PostOfferComponent implements OnInit {
         }
     }
   )).subscribe(data=>{
-    this.route.navigate(['/main-page/employee-home']);
+    this.route.navigate(['/main-page/my-offers']);
+    this.toast.success({detail:"Success", summary:"offer posted!", duration:5000})
    });
    console.log(JSON.stringify(this.offerForm.value))
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-main-page',
@@ -8,14 +9,15 @@ import { Router } from '@angular/router';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private toast: NgToastService) { }
 
   ngOnInit(): void {
   }
 
   logout(){
     sessionStorage.clear();
-    this.route.navigate(['/home']);
+    this.route.navigate(['/login']);
+    this.toast.success({detail:"LogoutSuccess", summary:"Login again to post", duration:5000})
   }
 
   goToProfile(): void{

@@ -59,21 +59,20 @@ public class OfferService {
         return offerRepository.save(offer);
     }
 
-    public Offer updateOffer(Offer offer) {
+    public void updateOffer(Offer offer) {
+
         Offer updateOffer = offerRepository.findById(offer.getOfferId()).orElseThrow(()-> new NoSuchElementException());
         updateOffer.setOfferModifiedDate(LocalDateTime.now());
+        updateOffer.setOfferTitle(offer.getOfferTitle());
         updateOffer.setOfferDescription(offer.getOfferDescription());
         updateOffer.setOfferNegotiable(offer.isOfferNegotiable());
         updateOffer.setCategory(offer.getCategory());
-        updateOffer.setOfferPrice(offer.getOfferPrice());
-        updateOffer.setOfferTitle(offer.getOfferTitle());
-//        long val = offer.getEmployeeEngage();
-//        if(val>0)
-//        {
-//            updateOffer.setOfferEngagedDate(LocalDate.now());
-//            updateOffer.setOfferClosedDate(LocalDate.now());
-//        }
-        return offerRepository.save(updateOffer);
+        Offer newOffer = offerRepository.save(updateOffer);
+        log.info(newOffer+" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+        //return newOffer;
+        //updateOffer.setOfferPrice(offer.getOfferPrice());
+       // updateOffer.setOfferTitle(offer.getOfferTitle());
+        //return offerRepository.save(updateOffer);
     }
 
     public List<Offer> getOfferByCategory(Long id)
@@ -120,12 +119,18 @@ public class OfferService {
         return offerRepository.findById(offerId).orElseThrow(()->new NoSuchElementException());
     }
 
-    public Offer engageOffer(Offer offer) {
+    public void engageOffer(Offer offer) {
         Offer updateOffer = offerRepository.findById(offer.getOfferId()).orElseThrow(()->new NoSuchElementException());
+        log.info(">>>>>>>>>>>>>>>>>>>>>>>>>"+offer.getEmployeeEngage());
         updateOffer.setEmployeeEngage(offer.getEmployeeEngage());
+        log.info(">>>>>>>>>>>>>>UPdateOffer>>>>>>>>>>>"+updateOffer.getEmployeeEngage());
         updateOffer.setOfferEngagedDate(LocalDate.now());
         updateOffer.setOfferClosedDate(LocalDate.now());
-        return offerRepository.save(updateOffer);
+        Offer newOffer = offerRepository.save(updateOffer);
+        log.info(">>>>>>>>>>>>>>> "+newOffer);
+
+        //updateOffer.setOfferActive(false);
+        //return offerRepository.save(updateOffer);
     }
    /* public CategoryDto convertCategoryToDTO(Category category)
     {

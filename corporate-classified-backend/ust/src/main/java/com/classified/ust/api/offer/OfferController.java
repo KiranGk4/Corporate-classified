@@ -56,34 +56,23 @@ public class OfferController {
 
     @CrossOrigin("http://localhost:4200/")
     @PutMapping("/update-offer/{id}")
-    public ResponseEntity<Offer> updateOffer(@RequestBody Offer offer,@PathVariable Long id)
+    public void updateOffer(@RequestBody Offer offer,@PathVariable Long id)
     {
-        try
-        {
-            Offer offer1 = offerService.updateOffer(offer);
+
+            offerService.updateOffer(offer);
             //OfferDto offerDto = offerService.convertToOfferDto(offer1);
-            return new ResponseEntity<>(offer1,HttpStatus.CREATED);
-        }
-        catch (NoSuchElementException e)
-        {
-            return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
-        }
+           // return offer1;
+
     }
 
     @CrossOrigin("http://localhost:4200/")
-    @PutMapping("/engage-offer/{id}")
-    public ResponseEntity<Offer> engageOffer(@RequestBody Offer offer,@PathVariable Long id)
+    @PutMapping("/engage-offer")
+    public void engageOffer(@RequestBody Offer offer)
     {
-        try
-        {
-            Offer offer1 = offerService.engageOffer(offer);
+
+            offerService.engageOffer(offer);
             //OfferDto offerDto = offerService.convertToOfferDto(offer1);
-            return new ResponseEntity<>(offer1,HttpStatus.CREATED);
-        }
-        catch (NoSuchElementException e)
-        {
-            return new ResponseEntity<>(HttpStatus.PRECONDITION_FAILED);
-        }
+          //  return offer1;
     }
 
     @CrossOrigin("http://localhost:4200")

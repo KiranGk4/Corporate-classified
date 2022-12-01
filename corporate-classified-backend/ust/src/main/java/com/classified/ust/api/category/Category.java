@@ -3,6 +3,7 @@ package com.classified.ust.api.category;
 import com.classified.ust.api.offer.Offer;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import java.util.Set;
 
 @Entity
 @Data
+@Getter
 @Table(name = "classified_category")
 public class Category{
     @Id
@@ -31,4 +33,12 @@ public class Category{
     @JsonIgnore
     @Column(name ="offer_id")
     private List<Offer> offerList;
+
+    @Override
+    public String toString() {
+        return "Category{" +
+                "categoryId=" + categoryId +
+                ", categoryName='" + categoryName + '\'' +
+                '}';
+    }
 }

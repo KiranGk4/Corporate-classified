@@ -40,7 +40,6 @@ public class Offer {
     @JoinColumn(name = "employee_id")
     private Employee employee;      //Employee who posted the offer.
 
-    @Column(name = "employee_engage_id")
     private long employeeEngage;
 
     @ManyToOne
@@ -58,6 +57,5 @@ public class Offer {
    @JsonIgnore
    @Column(name = "like_id")
    private List<Like> likeList;
-
 
 }

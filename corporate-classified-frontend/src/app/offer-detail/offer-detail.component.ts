@@ -48,10 +48,10 @@ export class OfferDetailComponent implements OnInit {
     //this.offer?.offerLikes = this.offer?.offerLikes + 1;
   }
 
-  engage(offerId: number){
+  engage(offerId:number){
     this.offerService.getOffer(offerId).subscribe(
-      data => {
-        this.offer = data;
+      data=>{
+        this.offer=data;
       }
     );
     this.toast.success({detail:"Engaged ", summary:"Offer Engaged", duration:5000});

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgToastService } from 'ng-angular-popup';
 import { Employee } from '../interfaces/employee';
@@ -28,7 +28,7 @@ export class LoginComponent implements OnInit {
     console.log(this.loginForm.value);
     this.offerService.employeeLogin(this.loginForm.value).subscribe(
       data=>{
-        this.getEmployee(data.email);
+        this.getEmployee(this.loginForm.value.email);
         if(sessionStorage.getItem('userId')){
           this.route.navigate(['/main-page/employee-home']);
         }

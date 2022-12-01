@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Category } from '../interfaces/category';
 import { Offer } from '../interfaces/offer';
 import { OfferService } from '../services/offer/offer.service';
+import{NgToastService} from 'ng-angular-popup';
 
 @Component({
   selector: 'app-edit-offer',
@@ -26,7 +27,9 @@ export class EditOfferComponent implements OnInit {
     category: new FormControl(0)
    });
 
-  constructor(private offerService: OfferService,private route: ActivatedRoute, private route1: Router) { }
+
+  constructor(private offerService: OfferService,private route: ActivatedRoute, private route1: Router, private toast: NgToastService) { }
+
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.params['id']);
@@ -74,7 +77,11 @@ export class EditOfferComponent implements OnInit {
          }
        )).subscribe((result)=>{
       this.route1.navigate(['/main-page/my-offers'])
+      this.toast.success({detail:"SucessMessage",summary:"Updated Sucessfully",duration:5000})
       console.log(result);
+    },err=>{
+      this.toast.error({detail:"ErrorMessage",summary:"Update Failed",duration:5000})
+      
     })
   }
 
